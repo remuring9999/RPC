@@ -20,16 +20,16 @@
 ### __Browser__ Example
 
 ```javascript
-const clientId = '287406016902594560';
-const scopes = ['rpc', 'rpc.api', 'messages.read'];
+const clientId = '868016688090710067';
+const scopes = ['rpc', 'rpc.voice'];
 
-const client = new RPC.Client({ transport: 'websocket' });
+const client = new RPC.Client({ transport: 'ipc' });
 
-client.on('ready', () => {
+client.on('ready', async () => {
   console.log('Logged in as', client.application.name);
   console.log('Authed for user', client.user.username);
 
-  client.selectVoiceChannel('81384788862181376');
+  const channel = await RPC.getSelectedVoiceChannel();
 });
 
 // Log in to RPC with client id
